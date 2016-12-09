@@ -19,7 +19,7 @@ var file = chai.file;
 var root            = process.cwd();
 var tmproot         = path.join(root, 'tmp');
 
-describe('models/builder.js', function() {
+describe.only('models/builder.js', function() {
   var addon, builder, buildResults, tmpdir;
 
   describe('._enableFSMonitorIfVizEnabled', function() {
@@ -220,6 +220,7 @@ describe('models/builder.js', function() {
 
     afterEach(function () {
       delete process._heimdall;
+      delete process.env.BROCCOLI_VIZ;
       builder.project.ui.output = '';
     });
 
@@ -241,6 +242,19 @@ describe('models/builder.js', function() {
 
         expect(output).to.not.include('Heimdalljs < 0.1.4 found.  Please remove old versions');
       });
+    });
+
+
+    it('outputs viz information if VIZ is enabled', function() {
+      process.env.BROCCOLI_VIZ = '1';
+
+      expect("check that outputviz iz a thing").to.eql('trueish');
+    });
+
+    it("sends viz information to plugins using the private unsupported undocumented, don't try this at home api", function() {
+      process.env.BROCCOLI_VIZ = '1';
+
+      expect('assertions exist').to.eql(true);
     });
   });
 
