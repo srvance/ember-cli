@@ -19,7 +19,7 @@ var file = chai.file;
 var root            = process.cwd();
 var tmproot         = path.join(root, 'tmp');
 
-describe.only('models/builder.js', function() {
+describe('models/builder.js', function() {
   var addon, builder, buildResults, tmpdir;
 
   describe('._enableFSMonitorIfVizEnabled', function() {
@@ -27,6 +27,7 @@ describe.only('models/builder.js', function() {
     var originalStatSync = fs.statSync;
 
     beforeEach(function () {
+      // TODO: s/BROCCOLI_VIZ/EMBER_CLI_INSTRUMENTATION
       expect(!!process.env.BROCCOLI_VIZ).to.eql(false);
     });
 

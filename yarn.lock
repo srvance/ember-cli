@@ -2531,6 +2531,10 @@ heimdalljs-logger@^0.1.7:
     debug "^2.2.0"
     heimdalljs "^0.2.0"
 
+heimdalljs-tree@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/heimdalljs-tree/-/heimdalljs-tree-0.1.0.tgz#18047f02ee45d0aaff9dc6110b8ac5920822e0b7"
+
 heimdalljs@^0.2.0, heimdalljs@^0.2.1:
   version "0.2.3"
   resolved "https://registry.npmjs.org/heimdalljs/-/heimdalljs-0.2.3.tgz#35b82a6a4d73541fc4fb88d2fe2b23608fb4f779"
