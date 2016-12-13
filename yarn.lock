@@ -1395,9 +1395,9 @@ ember-cli-blueprint-test-helpers@^0.14.0:
     rsvp "^3.0.17"
     tmp-sync "^1.0.0"
 
-ember-cli-broccoli-sane-watcher@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.npmjs.org/ember-cli-broccoli-sane-watcher/-/ember-cli-broccoli-sane-watcher-2.0.3.tgz#756163e08cdbb012a3421a1eb695497a834d351b"
+ember-cli-broccoli-sane-watcher@2.0.4:
+  version "2.0.4"
+  resolved "https://registry.npmjs.org/ember-cli-broccoli-sane-watcher/-/ember-cli-broccoli-sane-watcher-2.0.4.tgz#f43f42f75b7509c212fb926cd9aea86ae19264c6"
   dependencies:
     broccoli-slow-trees "^3.0.1"
     heimdalljs "^0.2.1"
