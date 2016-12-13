@@ -5027,9 +5027,9 @@ tough-cookie@>=0.12.0, tough-cookie@~2.3.0:
   dependencies:
     punycode "^1.4.1"
 
-tree-sync@^1.1.4:
-  version "1.1.5"
-  resolved "https://registry.npmjs.org/tree-sync/-/tree-sync-1.1.5.tgz#3ccb5c7c0bfaf1fab4dd89dd48206ab2b413be72"
+tree-sync@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.npmjs.org/tree-sync/-/tree-sync-1.2.1.tgz#35619b7c310f5dfb4091601c013e8a72da67937a"
   dependencies:
     debug "^2.2.0"
     fs-tree-diff "^0.5.2"
