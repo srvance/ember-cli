@@ -11,7 +11,7 @@ var MockProject     = require('../../helpers/mock-project');
 var remove          = Promise.denodeify(fse.remove);
 var mkTmpDirIn      = require('../../../lib/utilities/mk-tmp-dir-in');
 var td              = require('testdouble');
-
+var BUILD_INSTRUMENTATION = require('../../../lib/features/build-instrumentation');
 var chai = require('../../chai');
 var expect = chai.expect;
 var file = chai.file;
@@ -19,8 +19,43 @@ var file = chai.file;
 var root            = process.cwd();
 var tmproot         = path.join(root, 'tmp');
 
+var MockUI = require('console-ui/mock');
+
 describe('models/builder.js', function() {
   var addon, builder, buildResults, tmpdir;
+
+  describe('._reportVizInfo', function() {
+    var builder;
+    var instrumentationWasCalled;
+    var info = {};
+    var ui;
+    beforeEach(function() {
+      var addon1 = { };
+      var addon2 = { }
+
+      instrumentationWasCalled = 0;
+
+      addon2[BUILD_INSTRUMENTATION] = function(actualInfo) {
+        instrumentationWasCalled++;
+        expect(actualInfo).to.eql(info);
+      };
+
+      builder = new Builder({
+        project: {
+          addons: [ addon1, addon2 ]
+        },
+        setupBroccoliBuilder: function() { },
+        trapSignals: function() { }
+      })
+    });
+
+    it('invokes on addons that have [BUILD_INSTRUMENTATION]', function() {
+      expect(builder.project.addons.length).to.eql(2);
+      expect(instrumentationWasCalled).to.eql(0);
+      builder._reportVizInfo(info);
+      expect(instrumentationWasCalled).to.eql(1);
+    });
+  });
 
   describe('._enableFSMonitorIfVizEnabled', function() {
     var originalBroccoliViz = process.env.BROCCOLI_VIZ;
